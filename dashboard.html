@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Forex AI Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f7fa;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #0077b6, #00b4d8);
+      color: white;
+      padding: 25px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+      letter-spacing: 1px;
+    }
+
+    /* Navbar */
+    nav {
+      display: flex;
+      justify-content: center;
+      background: #ffffff;
+      padding: 12px 0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav a {
+      margin: 0 20px;
+      text-decoration: none;
+      color: #0077b6;
+      font-weight: bold;
+      font-size: 16px;
+      position: relative;
+      transition: 0.3s;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: #00b4d8;
+      left: 0;
+      bottom: -4px;
+      transition: width 0.3s;
+    }
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* Content */
+    .content {
+      text-align: center;
+      padding: 40px 20px;
+    }
+    #userDetails {
+      margin: 20px 0;
+      font-size: 20px;
+      font-weight: bold;
+      color: #0077b6;
+    }
+    h2 {
+      margin-bottom: 30px;
+      font-size: 24px;
+    }
+
+    /* Icon Grid */
+    .icon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 25px;
+      justify-items: center;
+      margin: 0 auto;
+      max-width: 1000px;
+    }
+    .icon-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 25px;
+      width: 150px;
+      height: 150px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0px 6px 12px rgba(0,0,0,0.1);
+      transition: all 0.3s ease-in-out;
+      cursor: pointer;
+    }
+    .icon-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0px 12px 20px rgba(0,0,0,0.15);
+    }
+    .icon-card i {
+      font-size: 36px;
+      color: #0077b6;
+      margin-bottom: 12px;
+    }
+    .icon-card span {
+      font-size: 15px;
+      font-weight: 600;
+      color: #444;
+    }
+
+    /* Logout Button */
+    #logoutBtn {
+      margin-top: 40px;
+      padding: 12px 25px;
+      background: #d9534f;
+      border: none;
+      color: #fff;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    #logoutBtn:hover {
+      background: #c9302c;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 60px;
+      background: #0077b6;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    footer p {
+      margin: 5px 0;
+    }
+    .social-icons {
+      margin-top: 10px;
+    }
+    .social-icons a {
+      margin: 0 10px;
+      color: white;
+      font-size: 20px;
+      transition: color 0.3s;
+    }
+    .social-icons a:hover {
+      color: #90e0ef;
+    }
+  </style>
+
+  <script type="module">
+    import { auth, signOut, onAuthStateChanged } from "./firebase.js";
+
+    window.onload = () => {
+      const userDetails = document.getElementById("userDetails");
+      const logoutBtn = document.getElementById("logoutBtn");
+
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          userDetails.innerHTML = `👤 Welcome, <strong>${user.email}</strong>`;
+        } else {
+          window.location.href = "login.html";
+        }
+      });
+
+      logoutBtn.addEventListener("click", () => {
+        signOut(auth).then(() => {
+          alert("Logged out!");
+          window.location.href = "login.html";
+        }).catch((error) => {
+          alert("Error: " + error.message);
+        });
+      });
+    };
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Forex AI</h1>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="dashboard.html">Dashboard</a>
+  </nav>
+
+  <div class="content">
+    <h2>Dashboard</h2>
+    <div id="userDetails"></div>
+
+    <div class="icon-grid">
+      <a href="skin.html" class="icon-card"><i class="fas fa-user-md"></i><span>Skin</span></a>
+      <a href="hair.html" class="icon-card"><i class="fas fa-cut"></i><span>Hair</span></a>
+      <a href="physical.html" class="icon-card"><i class="fas fa-running"></i><span>Physical</span></a>
+      <a href="eyes.html" class="icon-card"><i class="fas fa-eye"></i><span>Eyes</span></a>
+      <a href="heart.html" class="icon-card"><i class="fas fa-heartbeat"></i><span>Heart</span></a>
+      <a href="brain.html" class="icon-card"><i class="fas fa-brain"></i><span>Brain</span></a>
+      <a href="dental.html" class="icon-card"><i class="fas fa-tooth"></i><span>Dental</span></a>
+      <a href="diet.html" class="icon-card"><i class="fas fa-apple-alt"></i><span>Diet</span></a>
+      <a href="exercise.html" class="icon-card"><i class="fas fa-dumbbell"></i><span>Exercise</span></a>
+      <a href="sleep.html" class="icon-card"><i class="fas fa-bed"></i><span>Sleep</span></a>
+    </div>
+
+    <button id="logoutBtn">Logout</button>
+  </div>
+
+  <!-- Disclaimer Section -->
+  <div style="max-width:1000px;margin:40px auto;padding:20px;background:#fff3cd;
+              border:1px solid #ffeeba;border-radius:8px;color:#856404;
+              font-size:14px;line-height:1.6;">
+    <strong>Disclaimer:</strong> Forex AI is a symptom checker tool designed only for 
+    educational and informational purposes. It does not provide a medical diagnosis. 
+    Always consult a qualified healthcare professional for accurate diagnosis and treatment. 
+    Do not rely solely on this application for medical decisions.
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Forex AI | Panimalar Engineering College</p>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+    </div>
+  </footer>
+</body>
+</html>

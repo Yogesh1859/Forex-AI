@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - Forex AI</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', sans-serif; }
+    body { background:white; color:#333; }
+    header {
+      display:flex; justify-content:space-between; align-items:center;
+      padding:1rem 3rem; box-shadow:0 4px 8px rgba(0,0,0,0.05);
+      position:sticky; top:0; background:#fff; z-index:1000; border-bottom:3px solid #4caf50;
+    }
+    header h2 { color:#4caf50; }
+    nav a { position:relative; margin-left:20px; text-decoration:none; font-weight:bold; color:#4caf50; padding-bottom:5px; transition:0.3s; }
+    nav a::after { content:""; position:absolute; width:0; height:2px; left:0; bottom:0; background-color:#2e7d32; transition:0.3s; }
+    nav a:hover::after, nav a.active::after { width:100%; }
+    nav a:hover, nav a.active { color:#2e7d32; }
+
+    .form-container {
+      max-width:400px; margin:8rem auto; padding:2rem; border-radius:12px; box-shadow:0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    .form-container h1 { text-align:center; color:#4caf50; margin-bottom:2rem; }
+    .form-container input { width:100%; padding:0.8rem; margin-bottom:1rem; border-radius:8px; border:1px solid #ccc; font-size:1rem; }
+    .form-container button { width:100%; padding:0.8rem; border:none; border-radius:8px; background:#4caf50; color:white; font-size:1rem; cursor:pointer; transition:0.3s; }
+    .form-container button:hover { background:#2e7d32; }
+    .form-container p { text-align:center; margin-top:1rem; }
+    .form-container p a { color:#4caf50; text-decoration:none; font-weight:bold; }
+    .form-container p a:hover { color:#2e7d32; }
+
+    footer { background:#222; color:#eee; padding:2rem; text-align:center; margin-top:4rem; }
+    footer .social img { width:30px; margin:0 10px; cursor:pointer; transition:0.3s; }
+    footer .social img:hover { transform:scale(1.2); }
+  </style>
+</head>
+<body>
+
+<header>
+  <h2>🩺 Forex AI</h2>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<div class="form-container">
+  <h1>Register</h1>
+  <form id="registerForm">
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <button type="submit">Register</button>
+  </form>
+  <p>Already have an account? <a href="login.html">Login</a></p>
+</div>
+
+<footer>
+  <p>© 2025 Forex AI - All Rights Reserved</p>
+  <div class="social">
+    <img src="https://img.icons8.com/ios-filled/50/ffffff/facebook-new.png" alt="Facebook">
+    <img src="https://img.icons8.com/ios-filled/50/ffffff/instagram-new.png" alt="Instagram">
+    <img src="https://img.icons8.com/ios-filled/50/ffffff/twitter.png" alt="Twitter">
+    <img src="https://img.icons8.com/ios-filled/50/ffffff/linkedin.png" alt="LinkedIn">
+  </div>
+</footer>
+
+<script type="module">
+  import { auth, db } from "./firebase.js";
+  import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+  import { doc, setDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+  const registerForm = document.getElementById("registerForm");
+
+  registerForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+
+      await setDoc(doc(db, "users", user.uid), {
+        email: email,
+        createdAt: new Date()
+      });
+
+      alert("Registration successful!");
+      window.location.href = "login.html";
+    } catch (error) {
+      alert(error.message);
+    }
+  });
+</script>
+
+</body>
+</html>

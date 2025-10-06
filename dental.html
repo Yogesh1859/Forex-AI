@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dental Check - Forex AI</title>
+  <style>
+    * {margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', sans-serif;}
+    body {background:#fff; color:#333;}
+    header {
+      display:flex; justify-content:space-between; align-items:center;
+      padding:1rem 3rem; box-shadow:0 4px 8px rgba(0,0,0,0.05);
+      position:sticky; top:0; background:#fff; border-bottom:3px solid #4caf50;
+    }
+    header h2 {color:#4caf50;}
+    nav a {margin-left:20px; text-decoration:none; font-weight:bold; color:#4caf50;}
+    nav a:hover {color:#2e7d32;}
+
+    .container {max-width:800px; margin:3rem auto; padding:2rem;}
+    h1 {text-align:center; color:#4caf50; margin-bottom:2rem;}
+
+    form {display:flex; flex-direction:column; gap:1rem;}
+    label {font-size:1rem; font-weight:500;}
+    .question {padding:1rem; border:1px solid #ddd; border-radius:8px;}
+    .options {margin-top:0.5rem;}
+    .options input {margin-right:5px;}
+
+    button {
+      margin-top:2rem; padding:0.8rem; border:none;
+      background:#4caf50; color:#fff; font-size:1rem; border-radius:8px; cursor:pointer;
+    }
+    button:hover {background:#2e7d32;}
+
+    .loading {display:none; text-align:center; margin-top:2rem;}
+    .loading img {width:80px;}
+    .result {display:none; margin-top:2rem; padding:1.5rem; background:#f1f8e9; border-left:5px solid #4caf50; border-radius:8px;}
+  </style>
+</head>
+<body>
+
+<header>
+  <h2>🦷 Forex AI</h2>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="dashboard.html">Dashboard</a>
+  </nav>
+</header>
+
+<div class="container">
+  <h1>Dental Symptom Checker</h1>
+  <form id="dentalForm">
+    <div class="question">
+      <label>1. Do you have frequent tooth pain?</label>
+      <div class="options">
+        <input type="radio" name="q1" value="yes"> Yes
+        <input type="radio" name="q1" value="no"> No
+      </div>
+    </div>
+    <div class="question">
+      <label>2. Do your gums bleed when brushing?</label>
+      <div class="options">
+        <input type="radio" name="q2" value="yes"> Yes
+        <input type="radio" name="q2" value="no"> No
+      </div>
+    </div>
+    <div class="question">
+      <label>3. Do you have persistent bad breath?</label>
+      <div class="options">
+        <input type="radio" name="q3" value="yes"> Yes
+        <input type="radio" name="q3" value="no"> No
+      </div>
+    </div>
+    <div class="question">
+      <label>4. Do you feel sensitivity to hot or cold foods?</label>
+      <div class="options">
+        <input type="radio" name="q4" value="yes"> Yes
+        <input type="radio" name="q4" value="no"> No
+      </div>
+    </div>
+    <div class="question">
+      <label>5. Do you have swollen gums?</label>
+      <div class="options">
+        <input type="radio" name="q5" value="yes"> Yes
+        <input type="radio" name="q5" value="no"> No
+      </div>
+    </div>
+    <div class="question">
+      <label>6. Do you have visible cavities?</label>
+      <div class="options">
+        <input type="radio" name="q6" value="yes"> Yes
+        <input type="radio" name="q6" value="no"> No
+      </div>
+    </div>
+    <div class="question">
+      <label>7. Do you grind your teeth at night?</label>
+      <div class="options">
+        <input type="radio" name="q7" value="yes"> Yes
+        <input type="radio" name="q7" value="no"> No
+      </div>
+    </div>
+    <div class="question">
+      <label>8. Do you experience jaw pain?</label>
+      <div class="options">
+        <input type="radio" name="q8" value="yes"> Yes
+        <input type="radio" name="q8" value="no"> No
+      </div>
+    </div>
+    <div class="question">
+      <label>9. Do you have loose teeth?</label>
+      <div class="options">
+        <input type="radio" name="q9" value="yes"> Yes
+        <input type="radio" name="q9" value="no"> No
+      </div>
+    </div>
+    <div class="question">
+      <label>10. Do you notice gum recession?</label>
+      <div class="options">
+        <input type="radio" name="q10" value="yes"> Yes
+        <input type="radio" name="q10" value="no"> No
+      </div>
+    </div>
+    <div class="question">
+      <label>11. Do you feel pain while chewing?</label>
+      <div class="options">
+        <input type="radio" name="q11" value="yes"> Yes
+        <input type="radio" name="q11" value="no"> No
+      </div>
+    </div>
+    <div class="question">
+      <label>12. Do you have sores in your mouth?</label>
+      <div class="options">
+        <input type="radio" name="q12" value="yes"> Yes
+        <input type="radio" name="q12" value="no"> No
+      </div>
+    </div>
+    <div class="question">
+      <label>13. Do you have yellow or discolored teeth?</label>
+      <div class="options">
+        <input type="radio" name="q13" value="yes"> Yes
+        <input type="radio" name="q13" value="no"> No
+      </div>
+    </div>
+    <div class="question">
+      <label>14. Do you feel dryness in your mouth often?</label>
+      <div class="options">
+        <input type="radio" name="q14" value="yes"> Yes
+        <input type="radio" name="q14" value="no"> No
+      </div>
+    </div>
+    <div class="question">
+      <label>15. Do you experience sharp pain in teeth?</label>
+      <div class="options">
+        <input type="radio" name="q15" value="yes"> Yes
+        <input type="radio" name="q15" value="no"> No
+      </div>
+    </div>
+    <div class="question">
+      <label>16. Do you feel pressure in your teeth?</label>
+      <div class="options">
+        <input type="radio" name="q16" value="yes"> Yes
+        <input type="radio" name="q16" value="no"> No
+      </div>
+    </div>
+    <div class="question">
+      <label>17. Do you have difficulty opening your mouth fully?</label>
+      <div class="options">
+        <input type="radio" name="q17" value="yes"> Yes
+        <input type="radio" name="q17" value="no"> No
+      </div>
+    </div>
+    <div class="question">
+      <label>18. Do you notice pus or infection in gums?</label>
+      <div class="options">
+        <input type="radio" name="q18" value="yes"> Yes
+        <input type="radio" name="q18" value="no"> No
+      </div>
+    </div>
+    <div class="question">
+      <label>19. Do you experience frequent dental infections?</label>
+      <div class="options">
+        <input type="radio" name="q19" value="yes"> Yes
+        <input type="radio" name="q19" value="no"> No
+      </div>
+    </div>
+    <div class="question">
+      <label>20. Do you feel shaky or weak teeth?</label>
+      <div class="options">
+        <input type="radio" name="q20" value="yes"> Yes
+        <input type="radio" name="q20" value="no"> No
+      </div>
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <div class="loading" id="loading">
+    <p>Analyzing your symptoms...</p>
+    <img src="https://i.gifer.com/ZZ5H.gif" alt="Loading">
+  </div>
+
+  <div class="result" id="result"></div>
+</div>
+
+<script>
+  document.getElementById("dentalForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    document.getElementById("loading").style.display = "block";
+    document.getElementById("result").style.display = "none";
+
+    setTimeout(function(){
+      document.getElementById("loading").style.display = "none";
+
+      let issues = 0;
+      for(let i=1; i<=20; i++){
+        let val = document.querySelector('input[name="q'+i+'"]:checked');
+        if(val && val.value === "yes"){ issues++; }
+      }
+
+      let message = "";
+      if(issues > 8){
+        message = "<b>Possible Problem:</b> Gum Disease or Tooth Decay.<br><b>Consult:</b> Dentist / Periodontist.";
+      } else if(issues > 4){
+        message = "<b>Possible Problem:</b> Tooth Sensitivity or Early Cavities.<br><b>Consult:</b> Dentist.";
+      } else {
+        message = "<b>Your teeth look fine.</b> Maintain regular brushing and dental checkups.";
+      }
+
+      document.getElementById("result").innerHTML = message;
+      document.getElementById("result").style.display = "block";
+
+    }, 5000);
+  });
+</script>
+
+</body>
+</html>

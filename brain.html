@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brain Health - Forex AI</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f9ff;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #0077b6;
+      padding: 20px;
+      color: white;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+    .container {
+      width: 85%;
+      max-width: 800px;
+      margin: 30px auto;
+      background: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #0077b6;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    .question {
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+    .question label {
+      margin-right: 15px;
+    }
+    button {
+      display: block;
+      margin: 20px auto;
+      padding: 12px 30px;
+      font-size: 16px;
+      border: none;
+      background: #0077b6;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #005f86;
+    }
+    .loading {
+      display: none;
+      text-align: center;
+      font-size: 18px;
+      color: #0077b6;
+      margin-top: 20px;
+    }
+    .result {
+      display: none;
+      margin-top: 20px;
+      padding: 15px;
+      background: #e6f7ff;
+      border: 1px solid #0077b6;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 18px;
+      color: #333;
+    }
+    footer {
+      text-align: center;
+      margin: 30px 0 15px;
+      font-size: 14px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Forex AI - Brain Health Check</h1>
+  </header>
+
+  <div class="container">
+    <h2>Answer the Questions (Yes/No)</h2>
+    <form id="brainForm">
+      <div class="question">1. Do you experience frequent headaches?
+        <label><input type="radio" name="q1" value="yes"> Yes</label>
+        <label><input type="radio" name="q1" value="no"> No</label>
+      </div>
+      <div class="question">2. Do you have memory loss or forgetfulness?
+        <label><input type="radio" name="q2" value="yes"> Yes</label>
+        <label><input type="radio" name="q2" value="no"> No</label>
+      </div>
+      <div class="question">3. Do you feel dizziness or loss of balance?
+        <label><input type="radio" name="q3" value="yes"> Yes</label>
+        <label><input type="radio" name="q3" value="no"> No</label>
+      </div>
+      <div class="question">4. Do you suffer from frequent mood swings?
+        <label><input type="radio" name="q4" value="yes"> Yes</label>
+        <label><input type="radio" name="q4" value="no"> No</label>
+      </div>
+      <div class="question">5. Do you experience difficulty speaking or understanding speech?
+        <label><input type="radio" name="q5" value="yes"> Yes</label>
+        <label><input type="radio" name="q5" value="no"> No</label>
+      </div>
+      <div class="question">6. Do you often feel confused or disoriented?
+        <label><input type="radio" name="q6" value="yes"> Yes</label>
+        <label><input type="radio" name="q6" value="no"> No</label>
+      </div>
+      <div class="question">7. Do you suffer from seizures or convulsions?
+        <label><input type="radio" name="q7" value="yes"> Yes</label>
+        <label><input type="radio" name="q7" value="no"> No</label>
+      </div>
+      <div class="question">8. Do you experience loss of vision or double vision?
+        <label><input type="radio" name="q8" value="yes"> Yes</label>
+        <label><input type="radio" name="q8" value="no"> No</label>
+      </div>
+      <div class="question">9. Do you have difficulty sleeping (insomnia)?
+        <label><input type="radio" name="q9" value="yes"> Yes</label>
+        <label><input type="radio" name="q9" value="no"> No</label>
+      </div>
+      <div class="question">10. Do you feel numbness or weakness in body parts?
+        <label><input type="radio" name="q10" value="yes"> Yes</label>
+        <label><input type="radio" name="q10" value="no"> No</label>
+      </div>
+      <div class="question">11. Do you experience excessive stress or anxiety?
+        <label><input type="radio" name="q11" value="yes"> Yes</label>
+        <label><input type="radio" name="q11" value="no"> No</label>
+      </div>
+      <div class="question">12. Do you suffer from depression or sadness often?
+        <label><input type="radio" name="q12" value="yes"> Yes</label>
+        <label><input type="radio" name="q12" value="no"> No</label>
+      </div>
+      <div class="question">13. Do you experience tremors or shaking?
+        <label><input type="radio" name="q13" value="yes"> Yes</label>
+        <label><input type="radio" name="q13" value="no"> No</label>
+      </div>
+      <div class="question">14. Do you have difficulty concentrating?
+        <label><input type="radio" name="q14" value="yes"> Yes</label>
+        <label><input type="radio" name="q14" value="no"> No</label>
+      </div>
+      <div class="question">15. Do you feel tingling sensations in limbs?
+        <label><input type="radio" name="q15" value="yes"> Yes</label>
+        <label><input type="radio" name="q15" value="no"> No</label>
+      </div>
+      <div class="question">16. Do you hear strange noises or hallucinations?
+        <label><input type="radio" name="q16" value="yes"> Yes</label>
+        <label><input type="radio" name="q16" value="no"> No</label>
+      </div>
+      <div class="question">17. Do you experience fainting spells?
+        <label><input type="radio" name="q17" value="yes"> Yes</label>
+        <label><input type="radio" name="q17" value="no"> No</label>
+      </div>
+      <div class="question">18. Do you have difficulty recognizing faces/places?
+        <label><input type="radio" name="q18" value="yes"> Yes</label>
+        <label><input type="radio" name="q18" value="no"> No</label>
+      </div>
+      <div class="question">19. Do you often feel extreme fatigue without reason?
+        <label><input type="radio" name="q19" value="yes"> Yes</label>
+        <label><input type="radio" name="q19" value="no"> No</label>
+      </div>
+      <div class="question">20. Do you have a family history of neurological disorders?
+        <label><input type="radio" name="q20" value="yes"> Yes</label>
+        <label><input type="radio" name="q20" value="no"> No</label>
+      </div>
+
+      <button type="button" onclick="analyzeBrain()">Submit</button>
+    </form>
+
+    <div class="loading" id="loading">🔄 Analyzing your symptoms... Please wait</div>
+    <div class="result" id="result"></div>
+  </div>
+
+  <footer>
+    <p>© 2025 Forex AI | Brain Health Diagnosis</p>
+  </footer>
+
+  <script>
+    function analyzeBrain() {
+      document.getElementById("loading").style.display = "block";
+      document.getElementById("result").style.display = "none";
+
+      setTimeout(() => {
+        document.getElementById("loading").style.display = "none";
+
+        const form = document.getElementById("brainForm");
+        const answers = new FormData(form);
+        let yesCount = 0;
+
+        for (let value of answers.values()) {
+          if (value === "yes") yesCount++;
+        }
+
+        let diagnosis = "";
+        if (yesCount > 12) {
+          diagnosis = "⚠️ Severe neurological disorder symptoms detected. Please consult a Neurologist immediately.";
+        } else if (yesCount > 6) {
+          diagnosis = "⚠️ Moderate symptoms detected. Possible issues: Migraine, Epilepsy, Anxiety, Depression. Consult a Neurologist or Psychiatrist.";
+        } else if (yesCount > 2) {
+          diagnosis = "⚠️ Mild symptoms found. Keep track of your health. Consultation recommended.";
+        } else {
+          diagnosis = "✅ No major brain-related issues detected. You appear healthy!";
+        }
+
+        document.getElementById("result").innerHTML = diagnosis;
+        document.getElementById("result").style.display = "block";
+      }, 5000);
+    }
+  </script>
+</body>
+</html>

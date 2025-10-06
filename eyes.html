@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forex AI - Eye Diagnosis</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #dbeafe, #93c5fd);
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #1e3a8a;
+      color: #fff;
+      padding: 15px;
+      text-align: center;
+      font-size: 22px;
+      font-weight: bold;
+    }
+    .container {
+      max-width: 700px;
+      margin: 20px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    h2 {
+      text-align: center;
+      color: #1e40af;
+    }
+    .question {
+      margin: 12px 0;
+      font-weight: 500;
+    }
+    .options {
+      margin: 6px 0 16px 20px;
+    }
+    button {
+      display: block;
+      margin: 20px auto;
+      padding: 12px 30px;
+      background: #2563eb;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #1d4ed8;
+    }
+    .result, .loading {
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 20px;
+      display: none;
+    }
+    .loading::after {
+      content: " ⏳";
+      animation: dots 1.5s steps(3, end) infinite;
+    }
+    @keyframes dots {
+      0% { content: " ⏳"; }
+      33% { content: " ⏳."; }
+      66% { content: " ⏳.."; }
+      100% { content: " ⏳..."; }
+    }
+  </style>
+</head>
+<body>
+  <header>Forex AI - Eye Diagnosis</header>
+  <div class="container">
+    <h2>Answer the following questions about your eye health</h2>
+    <form id="eyeForm">
+      <div class="question">1. Do you often have blurry vision?</div>
+      <div class="options"><input type="radio" name="q1" value="yes"> Yes <input type="radio" name="q1" value="no"> No</div>
+
+      <div class="question">2. Do you experience frequent eye strain?</div>
+      <div class="options"><input type="radio" name="q2" value="yes"> Yes <input type="radio" name="q2" value="no"> No</div>
+
+      <div class="question">3. Do your eyes feel dry or itchy?</div>
+      <div class="options"><input type="radio" name="q3" value="yes"> Yes <input type="radio" name="q3" value="no"> No</div>
+
+      <div class="question">4. Do you get headaches after reading or screen use?</div>
+      <div class="options"><input type="radio" name="q4" value="yes"> Yes <input type="radio" name="q4" value="no"> No</div>
+
+      <div class="question">5. Do you have difficulty seeing at night?</div>
+      <div class="options"><input type="radio" name="q5" value="yes"> Yes <input type="radio" name="q5" value="no"> No</div>
+
+      <div class="question">6. Do you see halos around lights?</div>
+      <div class="options"><input type="radio" name="q6" value="yes"> Yes <input type="radio" name="q6" value="no"> No</div>
+
+      <div class="question">7. Do your eyes water excessively?</div>
+      <div class="options"><input type="radio" name="q7" value="yes"> Yes <input type="radio" name="q7" value="no"> No</div>
+
+      <div class="question">8. Do you feel eye pain or pressure?</div>
+      <div class="options"><input type="radio" name="q8" value="yes"> Yes <input type="radio" name="q8" value="no"> No</div>
+
+      <div class="question">9. Do you experience double vision?</div>
+      <div class="options"><input type="radio" name="q9" value="yes"> Yes <input type="radio" name="q9" value="no"> No</div>
+
+      <div class="question">10. Do you notice frequent redness in your eyes?</div>
+      <div class="options"><input type="radio" name="q10" value="yes"> Yes <input type="radio" name="q10" value="no"> No</div>
+
+      <div class="question">11. Do you have sensitivity to bright light?</div>
+      <div class="options"><input type="radio" name="q11" value="yes"> Yes <input type="radio" name="q11" value="no"> No</div>
+
+      <div class="question">12. Do you see floaters or black spots?</div>
+      <div class="options"><input type="radio" name="q12" value="yes"> Yes <input type="radio" name="q12" value="no"> No</div>
+
+      <div class="question">13. Do you have trouble focusing on objects?</div>
+      <div class="options"><input type="radio" name="q13" value="yes"> Yes <input type="radio" name="q13" value="no"> No</div>
+
+      <div class="question">14. Do you squint often to see clearly?</div>
+      <div class="options"><input type="radio" name="q14" value="yes"> Yes <input type="radio" name="q14" value="no"> No</div>
+
+      <div class="question">15. Do your eyes burn frequently?</div>
+      <div class="options"><input type="radio" name="q15" value="yes"> Yes <input type="radio" name="q15" value="no"> No</div>
+
+      <div class="question">16. Do you have frequent eye infections?</div>
+      <div class="options"><input type="radio" name="q16" value="yes"> Yes <input type="radio" name="q16" value="no"> No</div>
+
+      <div class="question">17. Do you feel difficulty distinguishing colors?</div>
+      <div class="options"><input type="radio" name="q17" value="yes"> Yes <input type="radio" name="q17" value="no"> No</div>
+
+      <div class="question">18. Do you feel eyes are tired even after sleep?</div>
+      <div class="options"><input type="radio" name="q18" value="yes"> Yes <input type="radio" name="q18" value="no"> No</div>
+
+      <div class="question">19. Do you have sudden vision loss episodes?</div>
+      <div class="options"><input type="radio" name="q19" value="yes"> Yes <input type="radio" name="q19" value="no"> No</div>
+
+      <div class="question">20. Do you have family history of eye diseases?</div>
+      <div class="options"><input type="radio" name="q20" value="yes"> Yes <input type="radio" name="q20" value="no"> No</div>
+
+      <button type="button" onclick="analyzeEye()">Submit</button>
+    </form>
+
+    <div class="loading" id="loading">Analyzing your symptoms, please wait</div>
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    function analyzeEye() {
+      document.getElementById("loading").style.display = "block";
+      document.getElementById("result").style.display = "none";
+
+      setTimeout(() => {
+        document.getElementById("loading").style.display = "none";
+
+        const answers = document.querySelectorAll('input[type="radio"]:checked');
+        let yesCount = 0;
+        answers.forEach(ans => {
+          if (ans.value === "yes") yesCount++;
+        });
+
+        let resultText = "";
+        if (yesCount > 12) {
+          resultText = "⚠️ You may have a serious eye condition (Glaucoma, Cataract, or Retinal issues). Please consult an Ophthalmologist immediately.";
+        } else if (yesCount > 7) {
+          resultText = "🔎 Symptoms indicate possible moderate eye problems such as Dry Eye Syndrome, Eye Strain, or Refractive Errors. Visit an Ophthalmologist soon.";
+        } else if (yesCount > 3) {
+          resultText = "👁️ You may have mild eye strain or dryness. Consider using artificial tears and reducing screen time. See an Eye Specialist if it persists.";
+        } else {
+          resultText = "✅ Your eye health seems fine. Regular check-ups with an Ophthalmologist are still recommended.";
+        }
+
+        document.getElementById("result").innerText = resultText;
+        document.getElementById("result").style.display = "block";
+      }, 5000);
+    }
+  </script>
+</body>
+</html>

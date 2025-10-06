@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hair Symptom Checker - Forex AI</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f7fa;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(135deg, #0077b6, #00b4d8);
+      color: white;
+      padding: 25px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    header h1 { margin: 0; font-size: 28px; }
+    nav {
+      display: flex;
+      justify-content: center;
+      background: #ffffff;
+      padding: 12px 0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav a {
+      margin: 0 20px;
+      text-decoration: none;
+      color: #0077b6;
+      font-weight: bold;
+      font-size: 16px;
+      position: relative;
+      transition: 0.3s;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: #00b4d8;
+      left: 0;
+      bottom: -4px;
+      transition: width 0.3s;
+    }
+    nav a:hover::after { width: 100%; }
+    .content { text-align: center; padding: 40px 20px; }
+    h2 { font-size: 28px; margin-bottom: 20px; color: #0077b6; }
+    .section-icon { font-size: 60px; color: #0077b6; margin-bottom: 15px; }
+    .question { margin: 15px 0; font-size: 16px; text-align: left; max-width: 700px; margin-left: auto; margin-right: auto; }
+    .question label { margin-right: 15px; }
+    button { margin-top: 20px; padding: 10px 25px; background: #0077b6; color: white; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; }
+    button:hover { background: #00b4d8; }
+    #result { margin-top: 30px; font-size: 18px; color: #0077b6; text-align: left; max-width: 700px; margin-left: auto; margin-right: auto; }
+    #loading { display:none; text-align:center; margin-top:20px; }
+    footer {
+      margin-top: 60px;
+      background: #0077b6;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    .social-icons { margin-top: 10px; }
+    .social-icons a { margin: 0 10px; color: white; font-size: 20px; transition: color 0.3s; }
+    .social-icons a:hover { color: #90e0ef; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Forex AI</h1>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="dashboard.html">Dashboard</a>
+  </nav>
+
+  <div class="content">
+    <h2><i class="section-icon fas fa-hair"></i> Hair Symptom Checker</h2>
+
+    <form id="hairForm">
+      <!-- 20 hair-related Yes/No questions -->
+      <div class="question">1. Hair fall more than usual? 
+        <label><input type="radio" name="q1" value="yes"> Yes</label>
+        <label><input type="radio" name="q1" value="no"> No</label>
+      </div>
+      <div class="question">2. Scalp itching? 
+        <label><input type="radio" name="q2" value="yes"> Yes</label>
+        <label><input type="radio" name="q2" value="no"> No</label>
+      </div>
+      <div class="question">3. Hair thinning? 
+        <label><input type="radio" name="q3" value="yes"> Yes</label>
+        <label><input type="radio" name="q3" value="no"> No</label>
+      </div>
+      <div class="question">4. Dandruff present? 
+        <label><input type="radio" name="q4" value="yes"> Yes</label>
+        <label><input type="radio" name="q4" value="no"> No</label>
+      </div>
+      <div class="question">5. Bald patches? 
+        <label><input type="radio" name="q5" value="yes"> Yes</label>
+        <label><input type="radio" name="q5" value="no"> No</label>
+      </div>
+      <div class="question">6. Oily scalp? 
+        <label><input type="radio" name="q6" value="yes"> Yes</label>
+        <label><input type="radio" name="q6" value="no"> No</label>
+      </div>
+      <div class="question">7. Hair breakage? 
+        <label><input type="radio" name="q7" value="yes"> Yes</label>
+        <label><input type="radio" name="q7" value="no"> No</label>
+      </div>
+      <div class="question">8. Scalp redness? 
+        <label><input type="radio" name="q8" value="yes"> Yes</label>
+        <label><input type="radio" name="q8" value="no"> No</label>
+      </div>
+      <div class="question">9. Hair dryness? 
+        <label><input type="radio" name="q9" value="yes"> Yes</label>
+        <label><input type="radio" name="q9" value="no"> No</label>
+      </div>
+      <div class="question">10. Split ends? 
+        <label><input type="radio" name="q10" value="yes"> Yes</label>
+        <label><input type="radio" name="q10" value="no"> No</label>
+      </div>
+      <div class="question">11. Hair loss after illness? 
+        <label><input type="radio" name="q11" value="yes"> Yes</label>
+        <label><input type="radio" name="q11" value="no"> No</label>
+      </div>
+      <div class="question">12. Scalp pimples? 
+        <label><input type="radio" name="q12" value="yes"> Yes</label>
+        <label><input type="radio" name="q12" value="no"> No</label>
+      </div>
+      <div class="question">13. Unusual hair color changes? 
+        <label><input type="radio" name="q13" value="yes"> Yes</label>
+        <label><input type="radio" name="q13" value="no"> No</label>
+      </div>
+      <div class="question">14. Excessive oiliness after washing? 
+        <label><input type="radio" name="q14" value="yes"> Yes</label>
+        <label><input type="radio" name="q14" value="no"> No</label>
+      </div>
+      <div class="question">15. Hair loss in patches? 
+        <label><input type="radio" name="q15" value="yes"> Yes</label>
+        <label><input type="radio" name="q15" value="no"> No</label>
+      </div>
+      <div class="question">16. Scalp burning sensation? 
+        <label><input type="radio" name="q16" value="yes"> Yes</label>
+        <label><input type="radio" name="q16" value="no"> No</label>
+      </div>
+      <div class="question">17. Brittle hair? 
+        <label><input type="radio" name="q17" value="yes"> Yes</label>
+        <label><input type="radio" name="q17" value="no"> No</label>
+      </div>
+      <div class="question">18. Scalp scaling? 
+        <label><input type="radio" name="q18" value="yes"> Yes</label>
+        <label><input type="radio" name="q18" value="no"> No</label>
+      </div>
+      <div class="question">19. Hair shedding more than usual? 
+        <label><input type="radio" name="q19" value="yes"> Yes</label>
+        <label><input type="radio" name="q19" value="no"> No</label>
+      </div>
+      <div class="question">20. Itchy scalp after hair products? 
+        <label><input type="radio" name="q20" value="yes"> Yes</label>
+        <label><input type="radio" name="q20" value="no"> No</label>
+      </div>
+
+      <button type="button" onclick="checkHair()">Submit</button>
+    </form>
+
+    <div id="loading">
+      <i class="fas fa-spinner fa-spin" style="font-size:30px; color:#0077b6;"></i>
+      <p>Analyzing your symptoms...</p>
+    </div>
+
+    <div id="result"></div>
+  </div>
+
+  <footer>
+    © 2025 Forex AI - All Rights Reserved
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    function checkHair() {
+      const form = document.getElementById('hairForm');
+      const data = new FormData(form);
+
+      const conditions = {
+        "Alopecia": ['q1','q5','q15','q19'],
+        "Dandruff": ['q2','q4','q12','q18'],
+        "Hair Thinning": ['q3','q7','q9','q17'],
+        "Oily Scalp": ['q6','q14','q10','q20'],
+        "Scalp Infection": ['q8','q11','q16','q20']
+      };
+
+      const doctors = {
+        "Alopecia": "Dermatologist",
+        "Dandruff": "Dermatologist",
+        "Hair Thinning": "Dermatologist",
+        "Oily Scalp": "Dermatologist",
+        "Scalp Infection": "Dermatologist"
+      };
+
+      // Show loading
+      document.getElementById('loading').style.display = 'block';
+      document.getElementById('result').innerHTML = '';
+
+      setTimeout(() => {
+        let results = [];
+        for (let condition in conditions) {
+          let count = 0;
+          conditions[condition].forEach(q => { if (data.get(q) === 'yes') count++; });
+          if (count >= 2) results.push(condition);
+        }
+
+        let resultText = "";
+        if (results.length === 0) {
+          resultText = "No significant hair issues detected.";
+        } else {
+          results.forEach(r => {
+            resultText += `<p><strong>${r}</strong>: Consult ${doctors[r]}</p>`;
+          });
+        }
+
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('result').innerHTML = resultText;
+
+      }, 5000); // 5-second loading
+    }
+  </script>
+</body>
+</html>

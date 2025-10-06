@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Physical Symptom Checker - Forex AI</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f7fa;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(135deg, #0077b6, #00b4d8);
+      color: white;
+      padding: 25px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    header h1 { margin: 0; font-size: 28px; }
+    nav {
+      display: flex;
+      justify-content: center;
+      background: #ffffff;
+      padding: 12px 0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav a {
+      margin: 0 20px;
+      text-decoration: none;
+      color: #0077b6;
+      font-weight: bold;
+      font-size: 16px;
+      position: relative;
+      transition: 0.3s;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: #00b4d8;
+      left: 0;
+      bottom: -4px;
+      transition: width 0.3s;
+    }
+    nav a:hover::after { width: 100%; }
+    .content { text-align: center; padding: 40px 20px; }
+    h2 { font-size: 28px; margin-bottom: 20px; color: #0077b6; }
+    .section-icon { font-size: 60px; color: #0077b6; margin-bottom: 15px; }
+    .question { margin: 15px 0; font-size: 16px; text-align: left; max-width: 700px; margin-left: auto; margin-right: auto; }
+    .question label { margin-right: 15px; }
+    button { margin-top: 20px; padding: 10px 25px; background: #0077b6; color: white; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; }
+    button:hover { background: #00b4d8; }
+    #result { margin-top: 30px; font-size: 18px; color: #0077b6; text-align: left; max-width: 700px; margin-left: auto; margin-right: auto; }
+    #loading { display:none; text-align:center; margin-top:20px; }
+    footer {
+      margin-top: 60px;
+      background: #0077b6;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    .social-icons { margin-top: 10px; }
+    .social-icons a { margin: 0 10px; color: white; font-size: 20px; transition: color 0.3s; }
+    .social-icons a:hover { color: #90e0ef; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Forex AI</h1>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="dashboard.html">Dashboard</a>
+  </nav>
+
+  <div class="content">
+    <h2><i class="section-icon fas fa-user-md"></i> Physical Symptom Checker</h2>
+
+    <form id="physicalForm">
+      <!-- 20 physical-related Yes/No questions -->
+      <div class="question">1. Fever or chills? 
+        <label><input type="radio" name="q1" value="yes"> Yes</label>
+        <label><input type="radio" name="q1" value="no"> No</label>
+      </div>
+      <div class="question">2. Headache frequently? 
+        <label><input type="radio" name="q2" value="yes"> Yes</label>
+        <label><input type="radio" name="q2" value="no"> No</label>
+      </div>
+      <div class="question">3. Fatigue or weakness? 
+        <label><input type="radio" name="q3" value="yes"> Yes</label>
+        <label><input type="radio" name="q3" value="no"> No</label>
+      </div>
+      <div class="question">4. Muscle or joint pain? 
+        <label><input type="radio" name="q4" value="yes"> Yes</label>
+        <label><input type="radio" name="q4" value="no"> No</label>
+      </div>
+      <div class="question">5. Nausea or vomiting? 
+        <label><input type="radio" name="q5" value="yes"> Yes</label>
+        <label><input type="radio" name="q5" value="no"> No</label>
+      </div>
+      <div class="question">6. Chest pain or tightness? 
+        <label><input type="radio" name="q6" value="yes"> Yes</label>
+        <label><input type="radio" name="q6" value="no"> No</label>
+      </div>
+      <div class="question">7. Shortness of breath? 
+        <label><input type="radio" name="q7" value="yes"> Yes</label>
+        <label><input type="radio" name="q7" value="no"> No</label>
+      </div>
+      <div class="question">8. Dizziness or fainting? 
+        <label><input type="radio" name="q8" value="yes"> Yes</label>
+        <label><input type="radio" name="q8" value="no"> No</label>
+      </div>
+      <div class="question">9. Swelling in limbs? 
+        <label><input type="radio" name="q9" value="yes"> Yes</label>
+        <label><input type="radio" name="q9" value="no"> No</label>
+      </div>
+      <div class="question">10. Loss of appetite? 
+        <label><input type="radio" name="q10" value="yes"> Yes</label>
+        <label><input type="radio" name="q10" value="no"> No</label>
+      </div>
+      <div class="question">11. Back pain? 
+        <label><input type="radio" name="q11" value="yes"> Yes</label>
+        <label><input type="radio" name="q11" value="no"> No</label>
+      </div>
+      <div class="question">12. Abdominal pain? 
+        <label><input type="radio" name="q12" value="yes"> Yes</label>
+        <label><input type="radio" name="q12" value="no"> No</label>
+      </div>
+      <div class="question">13. Frequent urination? 
+        <label><input type="radio" name="q13" value="yes"> Yes</label>
+        <label><input type="radio" name="q13" value="no"> No</label>
+      </div>
+      <div class="question">14. Constipation or diarrhea? 
+        <label><input type="radio" name="q14" value="yes"> Yes</label>
+        <label><input type="radio" name="q14" value="no"> No</label>
+      </div>
+      <div class="question">15. Rapid heartbeat? 
+        <label><input type="radio" name="q15" value="yes"> Yes</label>
+        <label><input type="radio" name="q15" value="no"> No</label>
+      </div>
+      <div class="question">16. Cold or flu symptoms? 
+        <label><input type="radio" name="q16" value="yes"> Yes</label>
+        <label><input type="radio" name="q16" value="no"> No</label>
+      </div>
+      <div class="question">17. Skin rashes? 
+        <label><input type="radio" name="q17" value="yes"> Yes</label>
+        <label><input type="radio" name="q17" value="no"> No</label>
+      </div>
+      <div class="question">18. Weight changes? 
+        <label><input type="radio" name="q18" value="yes"> Yes</label>
+        <label><input type="radio" name="q18" value="no"> No</label>
+      </div>
+      <div class="question">19. Sleep problems? 
+        <label><input type="radio" name="q19" value="yes"> Yes</label>
+        <label><input type="radio" name="q19" value="no"> No</label>
+      </div>
+      <div class="question">20. Unexplained bruises? 
+        <label><input type="radio" name="q20" value="yes"> Yes</label>
+        <label><input type="radio" name="q20" value="no"> No</label>
+      </div>
+
+      <button type="button" onclick="checkPhysical()">Submit</button>
+    </form>
+
+    <div id="loading">
+      <i class="fas fa-spinner fa-spin" style="font-size:30px; color:#0077b6;"></i>
+      <p>Analyzing your symptoms...</p>
+    </div>
+
+    <div id="result"></div>
+  </div>
+
+  <footer>
+    © 2025 Forex AI - All Rights Reserved
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    function checkPhysical() {
+      const form = document.getElementById('physicalForm');
+      const data = new FormData(form);
+
+      const conditions = {
+        "Flu/Cold": ['q1','q16','q2','q3'],
+        "Digestive Issue": ['q5','q12','q14','q10'],
+        "Heart Problem": ['q6','q7','q15','q8'],
+        "Muscle/Joint Pain": ['q4','q11','q3','q9'],
+        "Sleep Disorder": ['q19','q3','q18','q2']
+      };
+
+      const doctors = {
+        "Flu/Cold": "General Physician",
+        "Digestive Issue": "Gastroenterologist",
+        "Heart Problem": "Cardiologist",
+        "Muscle/Joint Pain": "Orthopedic",
+        "Sleep Disorder": "Neurologist"
+      };
+
+      // Show loading
+      document.getElementById('loading').style.display = 'block';
+      document.getElementById('result').innerHTML = '';
+
+      setTimeout(() => {
+        let results = [];
+        for (let condition in conditions) {
+          let count = 0;
+          conditions[condition].forEach(q => { if (data.get(q) === 'yes') count++; });
+          if (count >= 2) results.push(condition);
+        }
+
+        let resultText = "";
+        if (results.length === 0) {
+          resultText = "No significant physical issues detected.";
+        } else {
+          results.forEach(r => {
+            resultText += `<p><strong>${r}</strong>: Consult ${doctors[r]}</p>`;
+          });
+        }
+
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('result').innerHTML = resultText;
+
+      }, 5000); // 5-second loading
+    }
+  </script>
+</body>
+</html>

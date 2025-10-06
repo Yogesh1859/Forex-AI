@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Skin Symptom Checker - Forex AI</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f7fa;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(135deg, #0077b6, #00b4d8);
+      color: white;
+      padding: 25px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    header h1 { margin: 0; font-size: 28px; }
+    nav {
+      display: flex;
+      justify-content: center;
+      background: #ffffff;
+      padding: 12px 0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav a {
+      margin: 0 20px;
+      text-decoration: none;
+      color: #0077b6;
+      font-weight: bold;
+      font-size: 16px;
+      position: relative;
+      transition: 0.3s;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: #00b4d8;
+      left: 0;
+      bottom: -4px;
+      transition: width 0.3s;
+    }
+    nav a:hover::after { width: 100%; }
+    .content { text-align: center; padding: 40px 20px; }
+    h2 { font-size: 28px; margin-bottom: 20px; color: #0077b6; }
+    .section-icon { font-size: 60px; color: #0077b6; margin-bottom: 15px; }
+    .question { margin: 15px 0; font-size: 16px; text-align: left; max-width: 700px; margin-left: auto; margin-right: auto; }
+    .question label { margin-right: 15px; }
+    button { margin-top: 20px; padding: 10px 25px; background: #0077b6; color: white; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; }
+    button:hover { background: #00b4d8; }
+    #result { margin-top: 30px; font-size: 18px; color: #0077b6; text-align: left; max-width: 700px; margin-left: auto; margin-right: auto; }
+    #loading { display:none; text-align:center; margin-top:20px; }
+    footer {
+      margin-top: 60px;
+      background: #0077b6;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    .social-icons { margin-top: 10px; }
+    .social-icons a { margin: 0 10px; color: white; font-size: 20px; transition: color 0.3s; }
+    .social-icons a:hover { color: #90e0ef; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Forex AI</h1>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="dashboard.html">Dashboard</a>
+  </nav>
+
+  <div class="content">
+    <h2><i class="section-icon fas fa-user-md"></i> Skin Symptom Checker</h2>
+
+    <form id="skinForm">
+      <!-- 20 Yes/No questions -->
+      <div class="question">1. Red spots on your skin? 
+        <label><input type="radio" name="q1" value="yes"> Yes</label>
+        <label><input type="radio" name="q1" value="no"> No</label>
+      </div>
+      <div class="question">2. Experiencing itching? 
+        <label><input type="radio" name="q2" value="yes"> Yes</label>
+        <label><input type="radio" name="q2" value="no"> No</label>
+      </div>
+      <div class="question">3. Dry or flaky skin? 
+        <label><input type="radio" name="q3" value="yes"> Yes</label>
+        <label><input type="radio" name="q3" value="no"> No</label>
+      </div>
+      <div class="question">4. Bumps or pimples? 
+        <label><input type="radio" name="q4" value="yes"> Yes</label>
+        <label><input type="radio" name="q4" value="no"> No</label>
+      </div>
+      <div class="question">5. Swelling in any area? 
+        <label><input type="radio" name="q5" value="yes"> Yes</label>
+        <label><input type="radio" name="q5" value="no"> No</label>
+      </div>
+      <div class="question">6. Pus or fluid from skin? 
+        <label><input type="radio" name="q6" value="yes"> Yes</label>
+        <label><input type="radio" name="q6" value="no"> No</label>
+      </div>
+      <div class="question">7. Rashes on face or hands? 
+        <label><input type="radio" name="q7" value="yes"> Yes</label>
+        <label><input type="radio" name="q7" value="no"> No</label>
+      </div>
+      <div class="question">8. Dark patches on skin? 
+        <label><input type="radio" name="q8" value="yes"> Yes</label>
+        <label><input type="radio" name="q8" value="no"> No</label>
+      </div>
+      <div class="question">9. Oily skin? 
+        <label><input type="radio" name="q9" value="yes"> Yes</label>
+        <label><input type="radio" name="q9" value="no"> No</label>
+      </div>
+      <div class="question">10. Burning sensation on skin? 
+        <label><input type="radio" name="q10" value="yes"> Yes</label>
+        <label><input type="radio" name="q10" value="no"> No</label>
+      </div>
+      <div class="question">11. Blisters? 
+        <label><input type="radio" name="q11" value="yes"> Yes</label>
+        <label><input type="radio" name="q11" value="no"> No</label>
+      </div>
+      <div class="question">12. Skin peeling? 
+        <label><input type="radio" name="q12" value="yes"> Yes</label>
+        <label><input type="radio" name="q12" value="no"> No</label>
+      </div>
+      <div class="question">13. Frequent skin infections? 
+        <label><input type="radio" name="q13" value="yes"> Yes</label>
+        <label><input type="radio" name="q13" value="no"> No</label>
+      </div>
+      <div class="question">14. Scaling of the skin? 
+        <label><input type="radio" name="q14" value="yes"> Yes</label>
+        <label><input type="radio" name="q14" value="no"> No</label>
+      </div>
+      <div class="question">15. Redness around joints or nails? 
+        <label><input type="radio" name="q15" value="yes"> Yes</label>
+        <label><input type="radio" name="q15" value="no"> No</label>
+      </div>
+      <div class="question">16. Blackheads or whiteheads? 
+        <label><input type="radio" name="q16" value="yes"> Yes</label>
+        <label><input type="radio" name="q16" value="no"> No</label>
+      </div>
+      <div class="question">17. Excessive sweating? 
+        <label><input type="radio" name="q17" value="yes"> Yes</label>
+        <label><input type="radio" name="q17" value="no"> No</label>
+      </div>
+      <div class="question">18. Skin is sensitive to touch? 
+        <label><input type="radio" name="q18" value="yes"> Yes</label>
+        <label><input type="radio" name="q18" value="no"> No</label>
+      </div>
+      <div class="question">19. Painful bumps or nodules? 
+        <label><input type="radio" name="q19" value="yes"> Yes</label>
+        <label><input type="radio" name="q19" value="no"> No</label>
+      </div>
+      <div class="question">20. Itching worsens at night? 
+        <label><input type="radio" name="q20" value="yes"> Yes</label>
+        <label><input type="radio" name="q20" value="no"> No</label>
+      </div>
+
+      <button type="button" onclick="checkSkin()">Submit</button>
+    </form>
+
+    <div id="loading">
+      <i class="fas fa-spinner fa-spin" style="font-size:30px; color:#0077b6;"></i>
+      <p>Analyzing your symptoms...</p>
+    </div>
+
+    <div id="result"></div>
+  </div>
+
+  <footer>
+    © 2025 Forex AI - All Rights Reserved
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    function checkSkin() {
+      const form = document.getElementById('skinForm');
+      const data = new FormData(form);
+
+      const conditions = {
+        "Acne": ['q1','q4','q9','q16'],
+        "Eczema": ['q2','q3','q12','q14'],
+        "Skin Rash": ['q5','q6','q7','q20'],
+        "Fungal Infection": ['q8','q11','q13','q19'],
+        "Hyperhidrosis": ['q10','q17','q18']
+      };
+
+      const doctors = {
+        "Acne": "Dermatologist",
+        "Eczema": "Dermatologist",
+        "Skin Rash": "Dermatologist",
+        "Fungal Infection": "Dermatologist",
+        "Hyperhidrosis": "Dermatologist"
+      };
+
+      // Show loading
+      document.getElementById('loading').style.display = 'block';
+      document.getElementById('result').innerHTML = '';
+
+      // Wait 5 seconds before showing result
+      setTimeout(() => {
+        let results = [];
+        for (let condition in conditions) {
+          let score = conditions[condition].filter(q => data.get(q) === 'yes').length;
+          if (score >= 2) {
+            results.push(`${condition} - Consult: ${doctors[condition]}`);
+          }
+        }
+
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('result').innerHTML = results.length > 0 ? 
+          `<strong>Possible conditions:</strong><br>${results.join('<br>')}` :
+          "<strong>No major skin issues detected or mild irritation.</strong><br>Monitor your skin health.";
+      }, 5000);
+    }
+  </script>
+</body>
+</html>
